@@ -1,0 +1,61 @@
+{
+  "name": "ssr-demo",
+  "version": "0.1.0",
+  "description": "Add a plugin to test the ServerSideRender component.",
+  "author": "Ryan Kienstra",
+  "license": "GPL-2.0-or-later",
+  "keywords": [
+    "WordPress",
+    "plugin",
+    "AR"
+  ],
+  "homepage": "https://github.com/kienstra/ssr-demo#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/kienstra/ssr-demo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kienstra/ssr-demo/issues"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "devDependencies": {
+    "@google/model-viewer": "0.9.0",
+    "@testing-library/jest-dom": "5.1.1",
+    "@testing-library/react": "9.4.1",
+    "@wordpress/blocks": "6.12.1",
+    "@wordpress/components": "9.2.3",
+    "@wordpress/editor": "9.12.2",
+    "@wordpress/eslint-plugin": "3.3.0",
+    "@wordpress/i18n": "3.9.0",
+    "@wordpress/scripts": "6.2.0",
+    "eslint": "6.8.0",
+    "eslint-plugin-eslint-comments": "3.1.2",
+    "eslint-plugin-import": "2.20.1",
+    "husky": "^4.2.3",
+    "react": "16.13.0",
+    "webpack": "4.41.6",
+    "webpack-cli": "3.3.11",
+    "webpackbar": "4.0.0"
+  },
+  "scripts": {
+    "build": "wp-scripts build",
+    "deploy": "grunt deploy",
+    "dev": "wp-scripts start",
+    "lint": "npm-run-all --parallel lint:*",
+    "lint:js": "wp-scripts lint-js js/src",
+    "lint:js:files": "wp-scripts lint-js",
+    "lint:js:fix": "npm run lint:js -- --fix",
+    "lint:pkg-json": "wp-scripts lint-pkg-json",
+    "lint:php": "vendor/bin/phpcs",
+    "lint:php:fix": "vendor/bin/phpcbf",
+    "test:js": "wp-scripts test-unit-js",
+    "test:php": "composer test"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "./bin/pre-commit.sh"
+    }
+  }
+}
