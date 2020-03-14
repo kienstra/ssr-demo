@@ -101,7 +101,7 @@ class TestBlock extends TestCase {
 	public function test_render_block( $attributes, $expected ) {
 		$this->assertEquals(
 			$expected,
-			trim( $this->instance->render_block( $attributes ) ),
+			trim( $this->instance->render_block( $attributes ) )
 		);
 	}
 }
