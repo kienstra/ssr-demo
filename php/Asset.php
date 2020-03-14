@@ -22,20 +22,6 @@ class Asset {
 	const BLOCK_JS_SLUG = 'block';
 
 	/**
-	 * The slug of the block JS file.
-	 *
-	 * @var string
-	 */
-	const MODEL_VIEWER_JS_SLUG = 'model-viewer';
-
-	/**
-	 * The slug of the editor stylesheet.
-	 *
-	 * @var string
-	 */
-	const EDITOR_STYLES_SLUG = 'editor-styles';
-
-	/**
 	 * The plugin.
 	 *
 	 * @var Plugin
@@ -74,7 +60,7 @@ class Asset {
 	 * @param string $slug The slug of the script.
 	 */
 	public function enqueue_script( $slug ) {
-		$config = $this->get_script_config( self::MODEL_VIEWER_JS_SLUG );
+		$config = $this->get_script_config( self::BLOCK_JS_SLUG );
 		\wp_enqueue_script(
 			$this->get_prefixed_slug( $slug ),
 			$this->plugin->get_script_path( $slug ),
