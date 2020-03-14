@@ -29,6 +29,7 @@ const Edit = ( props ) => {
 				<ServerSideRender
 					block={ blockName }
 					attributes={ props.attributes }
+					requestBody={ true }
 				/>
 			</>
 		)
