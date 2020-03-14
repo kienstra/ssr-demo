@@ -64,10 +64,6 @@ class TestAsset extends TestCase {
 			->once()
 			->withSomeOfArgs( 'ssr-demo-block' );
 
-		WP_Mock::userFunction( 'wp_enqueue_script' )
-			->once()
-			->withSomeOfArgs( 'ssr-demo-model-viewer' );
-
 		$this->instance->enqueue_block_editor_scripts();
 
 	}
