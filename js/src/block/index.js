@@ -21,6 +21,10 @@ registerBlockType( blockName, {
 		text: {
 			type: 'string',
 		},
+		useRequestBody: {
+			type: 'boolean',
+			default: true,
+		},
 	},
 	edit: Edit,
 	save() {
