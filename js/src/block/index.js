@@ -23,6 +23,7 @@ registerBlockType( blockName, {
 		},
 		useRequestBody: {
 			type: 'boolean',
+			default: true,
 		},
 	},
 	edit: Edit,
