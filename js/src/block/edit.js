@@ -1,39 +1,64 @@
 /**
+ * External dependencies
+ */
+import PropTypes from 'prop-types';
+
+/**
  * WordPress dependencies
  */
 const { serverSideRender: ServerSideRender } = wp;
-import { TextareaControl } from '@wordpress/components';
-import { __ } from '@wordpress/i18n';
+import { InspectorControls } from '@wordpress/block-editor';
+import { PanelBody, TextareaControl, ToggleControl } from '@wordpress/components';
+import { sprintf, __ } from '@wordpress/i18n';
 
 /**
  * Internal dependencies
  */
 import { blockName } from './constants';
 
-const Edit = ( props ) => {
-	const { isSelected, setAttributes } = props;
-	const { text } = props.attributes;
-
+const Edit = ( { attributes: { text, useRequestBody }, isSelected, setAttributes } ) => {
 	return (
-		isSelected ? (
-			<TextareaControl
-				label={ __( 'Enter a long string, then click outside this block to see the ServerSideRender', 'ssr-demo' ) }
-				value={ text }
-				onChange={ ( newText ) => {
-					setAttributes( { text: newText } );
-				} }
-			/>
-		) : (
-			<>
-				{ __( 'Below is the ServerSideRender component, it should display the same text you entered, without an error:', 'ssr-demo' ) }
-				<ServerSideRender
-					block={ blockName }
-					attributes={ props.attributes }
-					requestBody={ true }
+		<>
+			<InspectorControls>
+				<PanelBody title={ __( 'SSR Settings', 'ssr-demo' ) }>
+					<ToggleControl
+						checked={ useRequestBody }
+						label={ sprintf( __( 'Use %s prop', 'augmented-reality' ), 'requestBody' ) }
+						onChange={ () => setAttributes( { useRequestBody: ! useRequestBody } ) }
+						nonExistent={ true }
+					>
+					</ToggleControl>
+				</PanelBody>
+			</InspectorControls>
+			{ isSelected ? (
+				<TextareaControl
+					label={ __( 'Enter a long string, then click outside this block to see the ServerSideRender', 'ssr-demo' ) }
+					value={ text }
+					onChange={ ( newText ) => {
+						setAttributes( { text: newText } );
+					} }
 				/>
-			</>
-		)
+			) : (
+				<>
+					{ __( 'Below is the ServerSideRender component, it should display the same text you entered, without an error:', 'ssr-demo' ) }
+					<ServerSideRender
+						block={ blockName }
+						attributes={ { text } }
+						requestBody={ useRequestBody }
+					/>
+				</>
+			) }
+		</>
 	);
+};
+
+Edit.propTypes = {
+	attributes: PropTypes.shape( {
+		text: PropTypes.string,
+		useRequestBody: PropTypes.bool,
+	} ),
+	setAttributes: PropTypes.func.isRequired,
+	isSelected: PropTypes.bool.isRequired,
 };
 
 export default Edit;
