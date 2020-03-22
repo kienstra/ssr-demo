@@ -23,7 +23,7 @@ const Edit = ( { attributes: { text, useRequestBody }, isSelected, setAttributes
 				<PanelBody title={ __( 'SSR Settings', 'ssr-demo' ) }>
 					<ToggleControl
 						checked={ useRequestBody }
-						label={ sprintf( __( 'Use %s prop', 'augmented-reality' ), 'requestBody' ) }
+						label={ sprintf( __( 'Use %s prop', 'ssr-demo' ), 'requestBody' ) }
 						onChange={ () => setAttributes( { useRequestBody: ! useRequestBody } ) }
 						nonExistent={ true }
 					>
