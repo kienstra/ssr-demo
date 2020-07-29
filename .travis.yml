@@ -25,6 +25,7 @@ matrix:
 
 install:
   - composer install
+  - nvm install --lts
   - npm install
   - npm run build
 
