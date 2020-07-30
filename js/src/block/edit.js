@@ -17,6 +17,8 @@ import { sprintf, __ } from '@wordpress/i18n';
 import { blockName } from './constants';
 
 const Edit = ( { attributes: { text, useRequestBody }, isSelected, setAttributes } ) => {
+	const httpMethod = useRequestBody ? 'POST' : 'GET';
+
 	return (
 		<>
 			<InspectorControls>
@@ -44,7 +46,7 @@ const Edit = ( { attributes: { text, useRequestBody }, isSelected, setAttributes
 					<ServerSideRender
 						block={ blockName }
 						attributes={ { text } }
-						requestBody={ useRequestBody }
+						httpMethod={ httpMethod }
 					/>
 				</>
 			) }
